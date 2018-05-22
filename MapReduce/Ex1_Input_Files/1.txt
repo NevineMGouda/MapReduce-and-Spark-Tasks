@@ -1,0 +1,6 @@
+Hello, this is Nevine. This is also Nevine.
+I live in Uppsala Sweden
+I am doing my masters degree here.
+ There is a,#lot of!@# characters    and spaces in<> this +_)(*&^^ line?/\ to check for corner CASES.
+ EVERYTHING SHOULD BE LOWER CASE!!!
+case CAse caSE asE
