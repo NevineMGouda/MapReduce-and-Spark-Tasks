@@ -1,0 +1,36 @@
+logpath="/loudacre/weblogs/2013-09-15.log"
+logs=sc.textFile(logpath)
+pairs=logs.map(lambda line: (line.split()[2],1))
+
+
+usercounts=pairs.reduceByKey(lambda v1,v2:v1+v2)
+usercounts.take(2)
+
+
+visitpairs=usercounts.map(lambda (k,v): (v,k))
+
+
+visitcounts=visitpairs.countByKey()
+visitcounts
+
+
+ippair=logs.map(lambda line: (line.split()[2],line.split()[0]))
+ipspairs=ippair.groupByKey().map(lambda x:(x[0],list(x[1])))
+
+
+accountpath="/loudacre/accounts/part-m-00000"
+accounts=sc.textFile(accountpath)
+useraccounts=accounts.map(lambda s: s.split(',')).map(lambda account: (account[0], account))
+joined=useraccounts.join(usercounts)
+
+
+for (userid,(values,count)) in joined.take(5):
+    print userid, count, values[3],values[4]
+
+
+postal=accounts.keyBy(lambda line: line.split(',')[8])
+
+
+namescode=postal.map(lambda (k,v):(k,(v.split(',')[4],v.split(',')[3]))).groupByKey().map(lambda (k,v): (k,list(v)))
+
+

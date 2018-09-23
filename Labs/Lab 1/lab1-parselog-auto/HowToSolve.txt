@@ -1,0 +1,4 @@
+1- Open solution/__init__.py and solve here.
+2- Follow the instructions and hints.
+3- Run from main.py, do not run from any subdirectory.
+4- Run grademe.py when you think you are done and you want to check your solution.
